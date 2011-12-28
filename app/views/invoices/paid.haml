@@ -1,0 +1,47 @@
+#main_invoice_container
+  %h3.main_pane_title
+    Paid Invoices
+  #main_pane_invoice
+    %table#customers.index_table{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+      %thead
+        %tr
+          %th.sortable
+            =link_to "ID", "#", :class => "super_specific_invoice"
+          %th.sortable
+            =link_to "Date", "#", :class => "super_specific_invoice"
+          %th.sorted-desc.sortable
+            =link_to "Name", "#", :class => "super_specific_invoice"
+          %th.sortable
+            =link_to "Email", "#", :class => "super_specific_invoice"
+          %th.sortable
+            =link_to "Description", "#", :class => "super_specific_invoice"
+          %th.sortable
+            =link_to "Status", "#", :class => "super_specific_invoice"
+      %tbody.body_invoices_paid
+        -@paid_invoices.each do |i|
+          %tr
+            %td
+              =link_to i.invoice_number, invoice_path(i.id), :class => "super_specific_invoice", :id => "#{i.id}"
+            %td
+              03/05/2012
+            %td 
+              =i.name
+            %td
+              =i.email
+            %td
+              =i.title
+            %td
+              -if(i.payment_received)
+                Received
+              -else
+                Pending
+    =link_to "Show More", "#", :class => "more_paid go"
+    
+    
+
+
+/ %ul.paid_list
+/ -@paid_invoices.each do |invoice|
+/   %li.invoice_item
+/     =link_to invoice.company, "#" , :class => "super_specific_invoice", :id => "#{invoice.id}"
+  

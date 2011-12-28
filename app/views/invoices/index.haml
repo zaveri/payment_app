@@ -1,0 +1,35 @@
+#main_invoice_container
+  %h3.main_pane_title
+    Overview
+  #main_pane_invoice
+    %table#customers.index_table{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+      %thead
+        %tr
+          %th.sortable
+            =sortable "ID", "invoice_number"
+          %th.sorted-desc.sortable
+            =sortable "Name", "name"
+          %th.sortable
+            =sortable "Email", "email"
+          %th.sortable
+            =sortable "Title", "title"
+          %th.sortable
+            =sortable "Status", "payment_received"
+      %tbody.body_invoices
+        -@invoices.each do |i|
+          %tr
+            %td
+              =link_to i.invoice_number, invoice_path(i.id), :class => "super_specific_invoice", :id => "#{i.id}"
+            %td 
+              =i.name
+            %td
+              =i.email
+            %td
+              =i.title
+            %td
+              -if(i.payment_received)
+                Received
+              -else
+                Pending
+    =link_to "Show More", "#", :class => "more_overview go"
+  .clear

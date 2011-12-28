@@ -1,0 +1,20 @@
+#new_acct.forms
+  .welcome
+    %h3 Stripe Keys
+  .company.signup
+    = form_for @user do |f|
+      -if @user.errors.any?  
+        #error_explanation
+          %h2= pluralize(@user.errors.count, "error")
+          -@user.errors.full_messages.each do |msg|
+            %ul.error_collection
+              %li.errors= msg
+      .field
+        =f.label "Pub Key"
+        =f.text_field :stripekey
+      .field
+        =f.label "Private Key"
+        =f.text_field :privatekey
+      .actions
+        =f.submit 'Add Keys', :class => "go"
+      .clear

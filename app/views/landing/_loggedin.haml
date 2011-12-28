@@ -1,0 +1,45 @@
+- total_all_unpaid = 0
+- current_user.invoices.where(payment_received: false).each do |unpaid|
+  - total_all_unpaid = total_all_unpaid + unpaid.total_due
+  
+- total_all_paid = 0
+- current_user.invoices.where(payment_received: true).each do |paid|
+  - total_all_paid = total_all_paid + paid.total_due
+
+- total_all = 0
+- current_user.invoices.each do |all|
+  - total_all = total_all + all.total_due
+      
+#main_invoice_container
+  %h3.main_pane_title
+    Invoice Analytics
+  #main_pane_invoice
+    %ul#detail_invoices_info
+      %li.total_invoices_life
+        %h3.title_summary_table
+          Total Invoices
+        .details_summary
+          -total_all_formatted = Money.new(total_all, "USD")
+          .details_amount
+            ="$#{number_with_precision(total_all_formatted, :precision => 2, :delimiter => ',')}"
+          .details_count
+            ="(#{current_user.invoices.count})"
+      %li.total_paid_invoices
+        %h3.title_summary_table
+          Total Paid Invoices
+        .details_summary
+          -total_all_paid_formatted = Money.new(total_all_paid, "USD")
+          .details_amount
+            ="$#{number_with_precision(total_all_paid_formatted, :precision => 2, :delimiter => ',')}"
+          .details_count
+            ="(#{current_user.invoices.where(payment_received: true).count})"
+      %li.total_pending_invoices.last_item
+        %h3.title_summary_table
+          Total Pending Invoices
+        .details_summary
+          -total_all_unpaid_formatted = Money.new(total_all_unpaid, "USD")
+          .details_amount
+            ="$#{number_with_precision(total_all_unpaid_formatted, :precision => 2, :delimiter => ',')}"
+          .details_count
+            ="(#{current_user.invoices.where(payment_received: false).count})"
+      .clear

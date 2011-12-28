@@ -1,0 +1,15 @@
+-@invoices.each do |i|
+  %tr
+    %td
+      =link_to i.invoice_number, invoice_path(i.id), :class => "super_specific_invoice", :id => "#{i.id}"
+    %td 
+      =i.name
+    %td
+      =i.email
+    %td
+      =i.title
+    %td
+      -if(i.payment_received)
+        Received
+      -else
+        Pending

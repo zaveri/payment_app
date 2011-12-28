@@ -1,0 +1,335 @@
+// Place all the styles related to the invoices controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#main_invoice_container{
+  -webkit-box-shadow: rgba(0, 0, 0, 0.0976562) 1px 0px 1px,
+                      rgba(0, 0, 0, 0.046875) 1px -1px 0px,
+                      rgba(0, 0, 0, 0.0976562) 0px 1px 0px,
+                      rgba(0, 0, 0, 0.0976562) -1px 0px 1px,
+                      rgba(0, 0, 0, 0.046875) -1px -1px 0px,
+                      rgba(0, 0, 0, 0.148438) 0px 3px 3px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.0976562) 1px 0px 1px,
+                   rgba(0, 0, 0, 0.046875) 1px -1px 0px,
+                   rgba(0, 0, 0, 0.0976562) 0px 1px 0px,
+                   rgba(0, 0, 0, 0.0976562) -1px 0px 1px,
+                   rgba(0, 0, 0, 0.046875) -1px -1px 0px,
+                   rgba(0, 0, 0, 0.148438) 0px 3px 3px;
+  
+  width: 750px;
+  margin: 20px auto;
+  background-color:white;
+  border-radius:5px;
+  padding:10px;
+  
+  #main_pane_invoice{
+    width:750px;
+    margin: 0 auto;
+  }
+  h3.main_pane_title{
+    border-bottom: 1px dotted #aaa;
+    text-shadow: 0px 1px 1px white;
+    font-weight:bold;
+    font-size:30px;
+    padding:10px;
+    color:#666;
+    // background:#b0f1bc;
+  }
+  .no_more{
+    color:red;
+  }
+}
+
+
+table.index_table {
+width: 100%;
+margin-bottom: 10px;
+border: 0;
+border-spacing: 0;
+}
+
+tr {
+display: table-row;
+vertical-align: inherit;
+border-color: inherit;
+}
+
+table.index_table td {
+padding: 10px 12px 8px 12px;
+border-bottom: 1px dotted #E8E8E8;
+vertical-align: top;
+}
+
+#invoice_show_container{
+  width:800px;
+  margin: 0 auto;
+  margin-top: 40px;
+  background:white;
+  padding-top:10px;
+  padding-bottom:10px;
+  border-radius: 5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.0976562) 1px 0px 1px,
+                      rgba(0, 0, 0, 0.046875) 1px -1px 0px,
+                      rgba(0, 0, 0, 0.0976562) 0px 1px 0px,
+                      rgba(0, 0, 0, 0.0976562) -1px 0px 1px,
+                      rgba(0, 0, 0, 0.046875) -1px -1px 0px,
+                      rgba(0, 0, 0, 0.148438) 0px 3px 3px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.0976562) 1px 0px 1px,
+                   rgba(0, 0, 0, 0.046875) 1px -1px 0px,
+                   rgba(0, 0, 0, 0.0976562) 0px 1px 0px,
+                   rgba(0, 0, 0, 0.0976562) -1px 0px 1px,
+                   rgba(0, 0, 0, 0.046875) -1px -1px 0px,
+                   rgba(0, 0, 0, 0.148438) 0px 3px 3px;
+  #top_toolbar_nav{
+    border-bottom: 1px solid grey;
+    margin-bottom:10px;
+    padding-bottom:8px;
+    .invoice_super_basic{
+      margin-left: 25px;
+    }
+    .invoice_status_blurb{
+      margin-right: 25px;      
+    }
+  }
+  #header_invoice_show{
+    margin: 0 auto;
+    color:#333;
+    width: inherit;
+    margin-bottom:50px;
+    border-bottom: 1px solid grey;
+    ul#client_info_show{
+      margin-right:25px;
+      .client_info{
+        text-shadow: 0px 1px 1px white;
+        font-weight: bold;
+        line-height:20px;
+      }
+      margin-bottom:20px;
+    }
+    ul#your_info_show{
+      margin-left:25px;
+      .your_info{
+        text-shadow: 0px 1px 1px white;
+        font-weight: bold;
+        line-height:20px;
+      }
+      margin-bottom:20px;
+    }
+  }
+  #content_items{
+	
+    table{
+			border: 1px solid grey;
+      margin: 0 auto;
+      color:#888;
+      width: 750px;
+      font-size: 12px;
+      
+      thead{
+				background:#ccc;
+        tr{
+          height:30px;
+          th{
+            font-size: 18px;
+            text-shadow: 0px 1px 1px white;
+            font-weight:bold;
+						padding:10px 0px 10px 0px;
+						border-right: 1px solid grey;
+          }
+        }
+      }
+      
+      tbody{
+        border-top: 1px solid grey;
+        tr{
+          height:30px;
+          td{
+            padding-top:10px;
+            font-size: 12px;
+            font-weight:bold;
+            text-indent: 25px;
+            text-align:center;
+            border-bottom: 1px dotted grey;
+            text-shadow: 0 1px 1px white;
+            color: #727374;
+          }
+        }
+        .even{
+          background: #D8E9D7;
+        }
+        .odd{
+          background:#D8E9D7;
+        }
+      }
+      
+      tfoot{
+        border-top: 1px solid grey;
+      }
+      
+    }
+    padding-bottom: 10px;
+    border-bottom:1px solid grey;
+  }
+  #total_pricing_container{  
+    margin-top:25px;
+    
+    #invoice_show_details{
+      width:400px;
+      margin-left:25px;
+      .invoice_show_details_blurb{
+        font-weight:400;
+        font-size:0.8em;
+      }
+    }
+    
+    #invoice_show_totals{
+      border: 1px solid grey;
+      border-radius: 5px;
+      width:270px;
+      margin-right: 25px;
+      padding:10px;
+      .price_summary{
+        border-bottom: 1px dotted grey;
+        padding-bottom:5px;
+        margin-bottom:5px;
+        overflow: hidden;
+        .invoice_sub_title{
+          font-weight:300;
+          float:left;
+          font-size:0.8em;
+          color: #333;
+        }
+        .invoice_show_price{
+          font-weight: bold;
+          font-size:0.8em;
+          color: #555;
+        }
+      }
+      
+      .final_price{
+        border-bottom: none;
+        .invoice_sub_title{
+          font-weight:bold;
+          float:left;
+          font-size:0.9em;
+          color: #000;
+        }
+        .invoice_show_price{
+          font-weight: bold;
+          font-size:0.9em;
+          color: #000;
+        }
+      }
+      
+    }
+    
+    #credit_form_area{
+      margin: 0 auto;
+      margin-top:20px;
+      width: 750px;
+      border: 1px solid grey;
+      border-radius: 5px;
+      padding: 10px;
+      
+      .field {
+        display: inline-block;
+        label {
+        font-size: 1.0em;
+        line-height: 1.6em;
+        display: block;
+        text-transform:capitalize
+        }
+        .upper_case{
+          text-transform:uppercase;
+        }
+        input{
+          width: 220px;
+  				color: grey;
+  				font-size: 18px;
+          line-height: 24px;
+  				border: none;
+          -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 1px #ffffff;
+          -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 1px #ffffff;
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 1px #ffffff;
+  				border-radius: 3px;
+  				-webkit-border-radius: 3px;
+  				-moz-border-radius: 3px;
+  				margin-right:10px;
+        }   
+      }
+      
+      .actions{
+        display: inline-block;
+      }
+      
+    }
+    
+  }
+}
+.invoice_basic_title{
+  margin-left:25px;
+  margin-bottom:5px;
+  font-size:0.8em;
+}
+.invoice_show_title{
+  margin-bottom:10px;
+  font-size:0.8em;
+  font-weight:bold;
+  color:black;
+}
+.invoice_time_main{
+  margin-left:25px;
+  margin-bottom:10px;
+  overflow: hidden;
+  .invoice_time_label{
+    font-size: 0.9em;
+    margin-right: 10px;
+    float: left;
+    width:90px;
+  }
+  .invoice_time_info{
+    font-size: 0.9em;
+    font-weight: bold;
+  }
+}
+
+ul#detail_invoices_info{
+  width: 530px;
+  padding:0px 10px 0px 10px;
+  margin:0 auto;
+  margin-top:20px;
+  margin-bottom:20px;
+  border-radius: 5px;
+  // background-color: #EFF0F1;s
+  border: 1px solid #CECFD0;
+  text-shadow: 0px 1px 1px white;
+  color:#888;
+  li{
+    display:inline-block;
+    padding:10px 30px 10px 20px;
+    border-right:1px solid #CECFD0;
+    .title_summary_table{
+      text-align:center;
+      font-weight:400;
+      color:#444;
+      font-size:0.9em; 
+      display:block;
+    }
+    .details_summary{
+      margin-top:5px;
+      text-align:center;
+      .details_amount{
+        display:inline-block;
+        font-weight:bold;
+      }
+      .details_count{
+        display:inline-block;
+        color:#3cf15e;
+        font-weight:500;
+      }
+    }
+  }
+  .last_item{
+    border-right:none;
+    padding-right:10px;
+  }
+}

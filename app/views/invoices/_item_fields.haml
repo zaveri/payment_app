@@ -1,0 +1,15 @@
+%tr.fields
+  %td
+    =f.text_area :description, :rows => 3, :cols => 28
+  %td.qty_field
+    =f.text_field :qty, :size => 5
+  %td.price_field
+    =f.text_field :price,  :size => 6
+  %td.sub_field
+    =f.text_field :sub_price,  :size => 6
+  %td.tax_check
+    =check_box_tag 'tax', 'yes', false, :class => 'tax_box' 
+  %td
+    =f.hidden_field :_destroy
+  %td.rm_link
+    = link_to_function "D", "remove_fields(this)"

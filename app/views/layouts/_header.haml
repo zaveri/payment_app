@@ -1,0 +1,25 @@
+#header
+  #inner
+    -if !current_user 
+      #logo.left
+        =link_to "Invoice", root_path
+    -if current_user
+      #nav_bar_landing.left
+        %ul.top_nav_bar
+          %li
+            = link_to "New Invoice", new_invoice_path, :class => "new_invoice_link pressed_link"
+          %li
+            = link_to "Overview", invoices_path, :class => "overview_link"
+          %li
+            = link_to "Paid", "/paidlist", :class => "paid_link"
+          %li
+            = link_to "Pending", "/pendinglist", :class => "pending_link"
+    #auth_right.right
+      -if current_user
+        %ul
+          %li= link_to "Sign Out", '/sign_out'
+      -else
+        %ul
+          %li=link_to 'Sign up', new_user_path
+          %li= link_to "Sign In", '/sign_in'
+    .clear

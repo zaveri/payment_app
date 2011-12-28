@@ -1,0 +1,24 @@
+#credit_form.forms
+  = form_for(@invoice, :url => "/chargeinvoice/#{@invoice.id}", :method => :post, :html => {:id => 'mycredit_form' }) do |f|
+    -if @invoice.errors.any?  
+      #error_explanation
+        %h2= pluralize(@invoice.errors.count, "error")
+        -@invoice.errors.full_messages.each do |msg|
+          %ul.error_collection
+            %li.errors= msg
+    
+    .field
+      =f.hidden_field :stripe_card_token
+    .field
+      = label_tag :card_number, "Credit Card Number "
+      = text_field_tag :card_number, nil, name: nil, :class => 'card-number'
+    .field
+      = label_tag :card_code, "CVV#", :class => "upper_case"
+      = text_field_tag :card_code, nil, name: nil, :class => "card-cvc"
+    .field
+      = label_tag :card_month, "Card Expiration"
+      = select_month nil, {add_month_numbers_true: true}, {name: nil, :class => "card-expiry-month"}
+      = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, :class => "card-expiry-year"}
+    .actions
+      =f.submit 'Pay Now', :class => "submit_button"
+    .clear

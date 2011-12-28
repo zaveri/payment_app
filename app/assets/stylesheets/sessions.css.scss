@@ -1,0 +1,211 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#new_session, #new_acct,{
+	background: #DCDDDF;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.0976562) 1px 0px 1px,
+                      rgba(0, 0, 0, 0.046875) 1px -1px 0px,
+                      rgba(0, 0, 0, 0.0976562) 0px 1px 0px,
+                      rgba(0, 0, 0, 0.0976562) -1px 0px 1px,
+                      rgba(0, 0, 0, 0.046875) -1px -1px 0px,
+                      rgba(0, 0, 0, 0.148438) 0px 3px 3px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.0976562) 1px 0px 1px,
+                   rgba(0, 0, 0, 0.046875) 1px -1px 0px,
+                   rgba(0, 0, 0, 0.0976562) 0px 1px 0px,
+                   rgba(0, 0, 0, 0.0976562) -1px 0px 1px,
+                   rgba(0, 0, 0, 0.046875) -1px -1px 0px,
+                   rgba(0, 0, 0, 0.148438) 0px 3px 3px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.65, rgba(255,255,255,0.558)), color-stop(1, rgba(255,255,255,1)));
+  background: -moz-linear-gradient(rgba(255,255,255,0.558) 65%, rgba(255,255,255,1) 100%);
+  border-radius:5px;
+  padding:10px;
+  width:360px;
+  margin: 80px auto;
+  overflow: hidden;
+  .welcome h3{
+    font-size: 18px;
+    text-shadow: 0px 1px 1px white;
+    color: #444;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom:10px;
+  }
+  form{
+    .field.header, .field.footer{
+      padding: 12px 0 10px;
+      text-align: left;
+			margin-left:10px;
+			margin-bottom:20px;
+      h3{
+				font-size:22px;
+				color:grey;
+        font-weight:bold;
+      }
+    }
+    .field.footer{
+      border-bottom:none;
+      border-top: 1px solid #fff;
+      color:#777;
+      h3{
+        text-shadow: 0 1px 1px white; 
+      }
+      h3:hover{
+        color:#555;
+    				text-decoration:underline;
+      }
+    }
+		.field{
+			overflow: hidden;
+      padding: 5px 10px;
+			label{
+				color:grey;
+				font-size: 100%;
+        font-weight: 200;
+				font-size: 20px;
+        line-height: 38px;
+				display: block;
+				float: left;
+				width: 170px;
+			}
+			input{
+				width: 306px;
+				color: grey;
+				font-size: 18px;
+        line-height: 24px;
+				border: 1px solid #999;
+        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 1px #ffffff;
+        -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 1px #ffffff;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 1px #ffffff;
+				border-radius: 3px;
+				-webkit-border-radius: 3px;
+				-moz-border-radius: 3px;
+        font-size: 18px;
+        padding: 10px 12px;
+        width: 306px;
+			}
+		}
+		.actions{
+		  margin: 10px auto;
+      position: relative;
+      cursor: pointer;
+      text-align:center;
+      .go{
+        font-size:14px;
+      }
+		}
+  }
+}
+
+
+#edit_acct{
+  margin:5px 5px 5px 5px;
+	margin-bottom:2px;
+  font-weight:500;
+  color:#999;
+  text-shadow:0px 1px 1px white;
+  .field{
+		overflow: hidden;
+    padding: 5px 10px;
+		label{
+			color:grey;
+			font-size: 100%;
+      font-weight: 200;
+			font-size: 20px;
+		}
+		input{
+			width: 250px;
+			color: grey;
+			font-size: 18px;
+      line-height: 24px;
+			border: none;
+      -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 1px #ffffff;
+      -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 1px #ffffff;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 1px #ffffff;
+			border-radius: 3px;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			// -webkit-background-clip: padding-box;
+      float: left;
+		}
+	}
+	.actions{
+		padding: 5px 10px;
+	}
+}
+  
+
+
+
+// errors form validation
+#error_explanation, .stripeError {
+  color:#35290c;
+  background-color:#fde3e2;
+	width:80%;
+	//   -moz-border-radius: 5px;
+	// // border-radius: 5px;
+	margin: 10px 0px 10px 40px;
+	border:1px solid #dda29f;
+	padding:10px 20px;
+	margin:10px auto;
+  
+}
+
+#error_explanation h2 {
+  font-size:1.3em;
+}
+
+#error_explanation ul {
+  list-style-type:none;
+  li {
+	line-height:1.4em;
+  }
+}
+
+
+// github button css
+
+.go{
+  overflow: visible; 
+  display: inline-block; 
+  padding: 0.5em 1em; 
+  border: 1px solid #d4d4d4; 
+  margin: 0;
+  text-decoration: none; 
+  text-shadow: 1px 1px 0 #fff; 
+  font:11px/normal sans-serif; 
+  color: #333; 
+  white-space: nowrap; 
+  cursor: pointer; 
+  outline: none; 
+  background-color: #ececec;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
+  background-image: -moz-linear-gradient(#f4f4f4, #ececec);
+  background-image: -o-linear-gradient(#f4f4f4, #ececec);
+  background-image: linear-gradient(#f4f4f4, #ececec);
+  -webkit-background-clip: padding;
+  -moz-background-clip: padding;
+  -o-background-clip: padding-box; 
+  /*background-clip: padding-box;*/ /* commented out due to Opera 11.10 bug */
+  -webkit-border-radius: 0.2em; 
+  -moz-border-radius: 0.2em; 
+  border-radius: 0.2em; 
+  /* IE hacks */
+  zoom: 1; 
+  *display: inline;
+	font-weight: bold;
+}
+.go:hover,
+.go:focus,
+.go:active,
+.go.active {
+  border-color: #3072b3;
+  border-bottom-color: #2a65a0;
+  text-decoration: none; 
+  text-shadow: -1px -1px 0 rgba(0,0,0,0.3); 
+  color: #fff; 
+  background-color: #3C8DDE;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#599bdc), to(#3072b3));
+  background-image: -moz-linear-gradient(#599bdc, #3072b3);
+  background-image: -o-linear-gradient(#599bdc, #3072b3);
+  background-image: linear-gradient(#599bdc, #3072b3);
+}

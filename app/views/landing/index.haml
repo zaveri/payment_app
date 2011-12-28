@@ -1,0 +1,5 @@
+#main_landing
+  -if(current_user)
+    = render :partial => "loggedin"
+  -else
+    = render :partial => "loggedout"

@@ -1,0 +1,6 @@
+%ul#invoices_list
+  -@invoices.each do |i|
+    %li.invoice_item
+      =link_to i.company, "#" , :class => "super_specific_invoice", :id => "#{i.id}"
+    
+      

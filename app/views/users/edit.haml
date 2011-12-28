@@ -1,0 +1,78 @@
+#main_edit
+  #edit_box
+    .title_container
+      %h3.title_style
+        Account Settings
+    .edit_info
+      #edit_acct.forms
+        .company.signup
+          = form_for @user do |f|
+            -if @user.errors.any?  
+              #error_explanation
+                %h2= pluralize(@user.errors.count, "error")
+                -@user.errors.full_messages.each do |msg|
+                  %ul.error_collection
+                    %li.errors= msg
+            .field
+              =f.label "Email:"
+              %br
+              =f.text_field :email
+            .field
+              =f.label "Name:"
+              %br
+              =f.text_field :name
+            .actions
+              =f.submit 'Update', :class => "go"
+            .clear
+    .title_container
+      %h3.title_style
+        Password
+    .edit_info
+      #edit_acct.forms
+        .company.signup
+          = form_for @user do |f|
+            -if @user.errors.any?  
+              #error_explanation
+                %h2= pluralize(@user.errors.count, "error")
+                -@user.errors.full_messages.each do |msg|
+                  %ul.error_collection
+                    %li.errors= msg
+            .field
+              =f.label "Current Password:"
+              %br
+              =f.text_field :password
+            .field
+              =f.label "Password:"
+              %br
+              =f.text_field :password
+            .field
+              =f.label "Confirm Password:"
+              %br
+              =f.text_field :password
+            .actions
+              =f.submit 'Update', :class => "go"
+            .clear
+    .title_container
+      %h3.title_style
+        Keys
+    .edit_info
+      #edit_acct.forms
+        .company.signup
+          = form_for @user do |f|
+            -if @user.errors.any?  
+              #error_explanation
+                %h2= pluralize(@user.errors.count, "error")
+                -@user.errors.full_messages.each do |msg|
+                  %ul.error_collection
+                    %li.errors= msg
+            .field
+              =f.label "Key:"
+              %br
+              =f.text_field :stripekey
+            .field
+              =f.label "Private:"
+              %br
+              =f.text_field :privatekey
+            .actions
+              =f.submit 'Update', :class => "go"
+            .clear

@@ -1,0 +1,110 @@
+#invoice_show_container
+  #top_toolbar_nav
+    .invoice_basic_title
+      ID Num:
+    .invoice_super_basic.left
+      =@invoice.invoice_number
+    .invoice_status_blurb.right
+      -if(@invoice.payment_received)
+        Payment Received
+      -else
+        Payment Pending
+    %br
+    = link_to "Printable Receipt (PDF)", invoice_path(@invoice, format: "pdf")
+    .clear
+  #header_invoice_show
+    .invoice_basic_title
+      To:
+    %ul#your_info_show.left
+      %li.your_info
+        Mzaveri Designs
+      %li.your_info
+        -comp = @invoice.user
+        =comp.name
+      %li.your_info
+        =comp.email
+    %ul#client_info_show.right
+      %li.client_info
+        =@invoice.company
+      %li.client_info
+        =@invoice.name
+      %li.client_info
+        =@invoice.email
+    .clear
+    
+    .invoice_time_main
+      .invoice_time_label
+        Invoice #:
+      .invoice_time_info
+        =@invoice.invoice_number
+      .clear
+      
+    .invoice_time_main
+      .invoice_time_label
+        Date:
+      .invoice_time_info
+        =@invoice.invoice_date
+      .clear
+      
+    .invoice_time_main
+      .invoice_time_label
+        Payment Due:
+      .invoice_time_info
+        =@invoice.due_date
+      .clear
+  #content_items
+    %table{:cellpadding => "0", :cellspacing => "0", :id => ""}
+      %thead
+        %tr
+          %th.column_1 Description
+          %th.column_2 Quantity
+          %th.column_3 Price
+          %th.column_4 Subtotal
+      %tbody
+        -@invoice.items.each do |item|
+          -per_item_price = Money.new(item.price, "USD")
+          -sub_price = Money.new(item.sub_price, "USD")
+          %tr.invoice_item{:class => cycle("even", "odd")}
+            %td.column_1
+              =truncate(item.description, :length => 1)
+            %td.column_2 
+              =item.qty
+            %td.column_3
+              =per_item_price
+            %td.column_4
+              =sub_price
+      %tfoot
+  #total_pricing_container
+    #invoice_show_details.left
+      .invoice_show_title
+        Details:
+      .invoice_show_details_blurb
+        This is where you can write any notes regarding this invoice. When the client pays this invoice, it will automatically be marked as “Paid”.
+    #invoice_show_totals.right
+      .price_summary
+        .invoice_sub_title
+          SubTotal
+        .invoice_show_price.right
+          -sub_totalmoney = Money.new(@invoice.subtotal, "USD")
+          ="$#{number_with_precision(sub_totalmoney, :precision => 2, :delimiter => ',')}"
+          
+      .price_summary
+        .invoice_sub_title
+          Taxes
+        .invoice_show_price.right
+          -totaltax = Money.new(@invoice.tax_total, "USD")
+          ="$#{number_with_precision(totaltax, :precision => 2, :delimiter => ',')}"
+          
+      .price_summary.final_price
+        .invoice_sub_title
+          Total
+        .invoice_show_price.right
+          -totalmoney = Money.new(@invoice.total_due, "USD")
+          ="$#{number_with_precision(totalmoney, :precision => 2, :delimiter => ',')}"
+    .clear
+    -if(@invoice.payment_received == false)
+      #credit_form_area
+        :javascript
+          Stripe.setPublishableKey("");
+        = render 'credit'
+      .clear

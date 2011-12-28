@@ -1,0 +1,12 @@
+%br
+#new_session.forms
+  .welcome
+    %h3 Sign In
+  = form_tag sessions_path do
+    .field
+      = text_field_tag :email, params[:email], :placeholder => "Email"
+    .field
+      = password_field_tag :password, :placeholder => "password"
+    .actions
+      =submit_tag "Sign In", :class => "go"
+    .clear

@@ -1,0 +1,15 @@
+%li.new_invoice_item
+  = form_for @item do |f|
+    .field
+      =f.label "Description"
+      %br
+      =f.text_area :description, :size => "40x5"
+      .field
+        =f.label "Qty:"
+        =f.text_field :qty
+      .field
+        =f.label "Price:"
+        =f.text_field :price, :class => "item_price"
+    .actions
+      =f.submit 'Post Item'
+  .clear

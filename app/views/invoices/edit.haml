@@ -1,0 +1,112 @@
+#nav_bar_landing
+  %ul.top_nav_bar
+    %li
+      = link_to "New Invoice", new_invoice_path, :class => "new_invoice_link pressed_link"
+    %li
+      = link_to "Overview", invoices_path, :class => "overview_link"
+    %li
+      = link_to "Paid", "/paidlist", :class => "paid_link"
+    %li
+      = link_to "Pending", "/pendinglist", :class => "pending_link"
+#main_invoice_container
+  %h3.main_pane_title
+    ="Edit Invoice: "+@invoice.invoice_number
+  #main_pane_invoice
+    #create_invoice.forms
+      = form_for @invoice do |f|
+        -if @invoice.errors.any?  
+          #error_explanation
+            %h2= pluralize(@invoice.errors.count, "error")
+            -@invoice.errors.full_messages.each do |msg|
+              %ul.error_collection
+                %li.errors= msg
+        #client_info.nested_inside
+          .field
+            =f.label "Company Name:"
+            =f.text_field :company
+            .tiny_details
+              Optional Field
+          .field
+            =f.label "Client Name:"
+            =f.text_field :name
+            .tiny_details
+              Required Field
+          .field
+            =f.label "Client Email:"
+            =f.text_field :email
+            .tiny_details
+              Required Field
+          .clear
+        #invoice_specific_info.nested_inside
+          .field
+            =f.label "Invoice Title:"
+            =f.text_field :title
+            .tiny_details
+              Required Field
+          .field
+            =f.label "Invoice number:"
+            =f.text_field :invoice_number
+            .tiny_details
+              Required Field
+          .field
+            =f.label "Invoice Date:"
+            =f.date_select(:invoice_date,:start_year => Date.today.year)
+            .tiny_details
+              Required Field
+          .field
+            =f.label "Due Date:"
+            =f.date_select(:due_date,:start_year => Date.today.year)
+            .tiny_details
+              Required Field
+        %br
+        #invoice_items_container.nested_inside
+          #invoice_items_title
+            %h3.item_title.left
+              Invoice Items:
+            %h3.add_item_link.right 
+              =link_to_add_fields "&", f, :items
+            .clear
+          %table#invoice_items_table.index_table{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+            %thead.items_heading
+              %tr
+                %th.sortable
+                  Description
+                %th.sortable
+                  Qty
+                %th.sortable
+                  Price
+                %th
+                  Subtotal
+                %th
+                  Tax
+                %th
+                %th
+            %tbody
+              =f.fields_for :items do |builder|
+                = render "item_fields", :f => builder
+        .clear
+        %br   
+        #tax_details_info.nested_inside
+          #tax_type
+            .field
+              =f.label "Tax Description:"
+              =f.text_field :tax_description
+          #tax_rate
+            .field
+              =f.label "Tax Rate (%):"
+              =f.text_field :tax_rate, :size => 5
+        #price_details_info.nested_inside
+          #sub_total_price
+            .field
+              =f.label "SubTotal:"
+              =f.text_field :subtotal
+          #total_price
+            .field
+              =f.label "Total Price:"
+              =f.text_field :total_due
+          .clear
+        %br
+        .actions
+          =f.submit 'Create Invoice', :class => "go"
+        .clear
+    .clear

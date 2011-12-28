@@ -1,0 +1,24 @@
+#new_acct.forms
+  .welcome
+    %h3
+      Sign Up
+  .company.signup
+    = form_for @user do |f|
+      -if @user.errors.any?  
+        #error_explanation
+          %h2= pluralize(@user.errors.count, "error")
+          -@user.errors.full_messages.each do |msg|
+            %ul.error_collection
+              %li.errors= msg
+      .field
+        / =f.label "Email:"
+        =f.text_field :email, :placeholder => "Email"
+      .field
+        / =f.label "Name:"
+        =f.text_field :name, :placeholder => "Name"
+      .field
+        / =f.label "Password:"
+        =f.password_field :password, :placeholder => "Password"
+      .actions
+        =f.submit 'Sign Up', :class => "go"
+      .clear
